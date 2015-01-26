@@ -1,0 +1,24 @@
+<h1>Add employee to <%= @division.name() %></h1>
+
+<form action="/division" method="post">
+  <input id="division_id" name="division_id" type="hidden" value="<%= @division.id() %>">
+
+  <label for "name">Employee name</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add employee</button>
+</form>
+
+<% if @division.employee().any?() %>
+  <h3>Here are all the employees in this division:</h3>
+
+  <ul>
+    <% @division.employee().each() do |employee| %>
+      <li><%= employee.name() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no employees in this division</p>
+<% end %>
+
+<a href="/">Return to main page</a>
