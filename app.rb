@@ -22,3 +22,12 @@ get("/division/:id") do
   @division = Division.find(params.fetch("id").to_i())
   erb(:division)
 end
+
+post("/employee") do
+  name = params.fetch("name")
+  division_id = params.fetch("division_id").to_i()
+  employee = Employee.new({:name => name, :division_id => division_id})
+  employee.save()
+  @division = Division.find(division_id)
+  erb(:division)
+end
