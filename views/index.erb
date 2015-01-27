@@ -16,3 +16,20 @@
 
   <button type='submit'>Add division</button>
 </form>
+
+<p>Here are your projects:</p>
+
+<ul>
+  <% @projects.each() do |project| %>
+  <li><%= project.name %><a href="/project/<%= project.id() %>"> Add employee</a></li>
+  <% end %>
+</ul>
+
+<p>Create new project:</p>
+
+<form action='/project' method='post'>
+  <label for='name'>Project name</label>
+  <input id='name' name='name' type='text'>
+
+  <button type='submit'>Add project</button>
+</form>
